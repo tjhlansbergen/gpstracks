@@ -4,13 +4,15 @@
   <title>gpx tracks</title>
 </head>
 <body>
-  <div>
-    <ul id="tracklist">
-      <li v-for="item in greeting" :key="item">
+  <div id="tracklist">
+    <ul>
+      <li v-for="item in greeting" :key="item[0]">
         [[ item ]]
       </li>
     </ul>  
+    <button v-on:click="createTrack">New!</button>
   </div>
+
  
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script src="{{ url_for('static', filename='tracklist.js') }}"></script>
