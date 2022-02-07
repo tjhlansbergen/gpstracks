@@ -10,9 +10,12 @@ db_name = 'tracks.db'
 with closing(sqlite3.connect("tracks.db")) as connection:
     connection.execute("CREATE TABLE IF NOT EXISTS tracks (id INTEGER PRIMARY KEY, gpx TEXT, place TEXT, type TEXT, distance INTEGER)")
 
-def select():
+def select(id):
     with closing(sqlite3.connect("tracks.db")) as connection:
-        rows = connection.execute("SELECT * FROM tracks").fetchall()
+        if id == None:
+            rows = connection.execute("SELECT id, place, type, distance FROM tracks").fetchall()
+        else:
+            rows = connection.execute("SELECT gpx FROM tracks WHERE id = ? LIMIT 1", (id,)).fetchall()
         print(f"SELECT {len(rows)} rows")
         return rows
 
@@ -29,7 +32,11 @@ def index():
 
 @app.route("/api/list")
 def list():
-    return jsonify(select())
+    return jsonify(select(None))
+
+@app.route("/api/get/<id>")
+def get(id):
+    return jsonify(select(id)[0])
 
 @app.route("/api/create", methods = ['POST'])
 def create():

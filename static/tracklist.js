@@ -2,12 +2,13 @@ new Vue({
     el: '#tracklist',
     delimiters: ['[[', ']]'],
     data: {
-      greeting: ['loading...']
+      tracks: ['loading...'],
+      gpx: 'gpx...'
     },
     created: async function(){
         const gResponse = await fetch('/api/list');
         const gObject = await gResponse.json();
-        this.greeting = gObject;
+        this.tracks = gObject;
     },
     methods: {
       createTrack: async function () {
@@ -21,6 +22,12 @@ new Vue({
 
         await fetch('/api/create', request);
         location.reload();
+      },
+      viewTrack: async function (id) {
+        const gResponse = await fetch('/api/get/' + id);
+        const gObject = await gResponse.json();
+
+        this.gpx = 'clicked ' + id + gObject 
       }
     }
 })

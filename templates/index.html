@@ -6,11 +6,12 @@
 <body>
   <div id="tracklist">
     <ul>
-      <li v-for="item in greeting" :key="item[0]">
-        [[ item ]]
+      <li v-for="item in tracks" :key="item[0]">
+        <a v-on:click="viewTrack(item[0])"> [[ item ]] </a>
       </li>
     </ul>  
     <button v-on:click="createTrack">New!</button>
+    <p>[[ gpx ]]</p>
   </div>
 
  
