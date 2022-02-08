@@ -13,7 +13,10 @@ with closing(sqlite3.connect("tracks.db")) as connection:
 def select(id):
     with closing(sqlite3.connect("tracks.db")) as connection:
         if id == None:
+            connection.row_factory = sqlite3.Row
             rows = connection.execute("SELECT id, place, type, distance FROM tracks").fetchall()
+            rows = [dict(row) for row in rows]
+            
         else:
             rows = connection.execute("SELECT gpx FROM tracks WHERE id = ? LIMIT 1", (id,)).fetchall()
         print(f"SELECT {len(rows)} rows")

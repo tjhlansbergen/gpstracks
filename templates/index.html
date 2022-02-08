@@ -2,12 +2,20 @@
 <html>
 <head>
   <title>gpx tracks</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
   <div id="tracklist">
     <ul>
-      <li v-for="item in tracks" :key="item[0]">
-        <a v-on:click="viewTrack(item[0])"> [[ item ]] </a>
+      <li v-for="item in tracks" :key="item.id">
+        <div class="list-item" v-on:click="viewTrack(item.id)">
+          <div class="grid-container">
+              <div class="label">AFSTAND:</div>
+              <div class="label">PLAATS:</div>
+              <div class="value">[[ item.distance ]]km</div>
+              <div class="value">[[ item.place ]]</div>
+          </div>
+        </div>
       </li>
     </ul>  
     <button v-on:click="createTrack">New!</button>
