@@ -1,5 +1,5 @@
 new Vue({
-    el: '#tracklist',
+    el: '#main',
     delimiters: ['[[', ']]'],
     data: {
       tracks: ['loading...'],
