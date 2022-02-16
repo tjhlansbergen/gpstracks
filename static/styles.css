@@ -3,6 +3,7 @@
 }
 
 body {
+    background-color: floralwhite;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -17,12 +18,16 @@ ul {
 
 #header {
     padding: 20px;
+    background-color: white;
 }
 
 #main {
+    margin: auto;
     display: flex;
     height: 100%;
-    background-color: whitesmoke;
+    justify-content: center;
+    max-width: 900px;
+    min-width: 900px;
 }
 
 #tracklist {
@@ -64,8 +69,12 @@ ul {
     color: #007ea7;
 }
 
+.active {
+    color: #46C646;
+}
+
 .list-item:hover .value{
-    color: #00a8e8;
+    /* color: #00a8e8; */
 }
 
 .list-item:hover{
@@ -74,6 +83,8 @@ ul {
 
 @media screen and ( max-width: 900px) {
     #main {
+        margin: 10px;
         flex-direction: column;
+        min-width: 360px;
     }
 }

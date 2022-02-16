@@ -11,12 +11,12 @@
     <div id="tracklist">
       <ul>
         <li v-for="item in tracks" :key="item.id">
-          <div class="list-item" v-on:click="viewTrack(item.id)">
+          <div class="list-item" v-on:click="viewTrack(item)">
             <div class="grid-container">
                 <div class="label">AFSTAND:</div>
                 <div class="label">PLAATS:</div>
-                <div class="value"><em>[[ item.distance ]]</em><span style="font-size: smaller;"> km</span></div>
-                <div class="value">[[ item.place ]]</div>
+                <div class="value" v-bind:class="{ active: item.active }"><em>[[ item.distance ]]</em><span style="font-size: smaller;">km</span></div>
+                <div class="value" v-bind:class="{ active: item.active }">[[ item.place ]]</div>
             </div>
           </div>
         </li>
