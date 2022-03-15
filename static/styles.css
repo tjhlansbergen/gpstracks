@@ -21,6 +21,11 @@ ul {
     background-color: white;
 }
 
+#footer {
+    padding: 20px;
+    background-color: white;
+}
+
 #main {
     margin: auto;
     display: flex;
@@ -42,6 +47,9 @@ ul {
     margin: 8px 0px;
 }
 
+#form {
+    margin: 20px;
+}
 
 .grid-container {
     display: grid;
@@ -71,10 +79,6 @@ ul {
 
 .active {
     color: #46C646;
-}
-
-.list-item:hover .value{
-    /* color: #00a8e8; */
 }
 
 .list-item:hover{

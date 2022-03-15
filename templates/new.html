@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>gpx tracks - new</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div id="form">
+        <div>
+            <label for="place">Location:</label>
+            <input type="text" id="place" v-model="place" placeholder="Amsterdam">
+        </div>
+        <div>
+            <label for="distance">Distance:</label>
+            <select id="distance" v-model="distance">
+                <option v-for="distance in distances">[[ distance ]]</option>
+            </select>
+        </div>
+        <div>
+            <label for="gpx">GPX:</label>
+            <textarea id="gpx" rows="10" v-model="gpx"></textarea>
+        </div> 
+        
+        <button v-on:click="createTrack">New!</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="{{ url_for('static', filename='new.js') }}"></script>
+</body>
+
+</html>

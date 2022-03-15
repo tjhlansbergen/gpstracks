@@ -22,16 +22,21 @@ def select(id):
         print(f"SELECT {len(rows)} rows")
         return rows
 
-def insert():
+def insert(payload):
     with closing(sqlite3.connect("tracks.db")) as connection:
-        print('INSERT')
-        connection.execute("INSERT INTO tracks VALUES (?, '<test>', 'Leiderdorp', 'roundtrip', 34)", (int(round(datetime.now().timestamp())),))
+        print('INSERT ' + payload['place'] + ' - ' + payload['distance'] + 'km')
+        connection.execute("INSERT INTO tracks VALUES (?, '<test>', ?, 'roundtrip', ?)", (int(round(datetime.now().timestamp())),payload['place'],payload['distance']))
         connection.commit()
 
     
 @app.route("/")
 def index():
     return render_template('index.html')
+
+@app.route("/new")
+def new():
+    return render_template('new.html')
+
 
 @app.route("/api/list")
 def list():
@@ -43,5 +48,5 @@ def get(id):
 
 @app.route("/api/create", methods = ['POST'])
 def create():
-    insert()
+    insert(request.get_json())
     return render_template('index.html')

@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>gpx tracks</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
-  <div id="header"><h1>trailgpx.nl</h1></div>
+  <div id="header">
+    <h1>trailgpx.nl</h1>
+  </div>
+
   <div id="main">
 
     <div id="tracklist">
@@ -13,25 +18,26 @@
         <li v-for="item in tracks" :key="item.id">
           <div class="list-item" v-on:click="viewTrack(item)">
             <div class="grid-container">
-                <div class="label">AFSTAND:</div>
-                <div class="label">PLAATS:</div>
-                <div class="value" v-bind:class="{ active: item.active }"><em>[[ item.distance ]]</em><span style="font-size: smaller;">km</span></div>
-                <div class="value" v-bind:class="{ active: item.active }">[[ item.place ]]</div>
+              <div class="label">AFSTAND:</div>
+              <div class="label">PLAATS:</div>
+              <div class="value" v-bind:class="{ active: item.active }"><em>[[ item.distance ]]</em><span
+                  style="font-size: smaller;">km</span></div>
+              <div class="value" v-bind:class="{ active: item.active }">[[ item.place ]]</div>
             </div>
           </div>
         </li>
-      </ul>  
-      <button v-on:click="createTrack">New!</button>
+      </ul>
     </div>
-    
+
     <div id="map">[[ gpx ]]</div>
-  
+
   </div>
- 
+
+  <div id="footer"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script src="{{ url_for('static', filename='main.js') }}"></script>
 
 </body>
+
 </html>
-
-
