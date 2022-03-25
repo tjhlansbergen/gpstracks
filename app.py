@@ -25,7 +25,7 @@ def select(id):
 def insert(payload):
     with closing(sqlite3.connect("tracks.db")) as connection:
         print('INSERT ' + payload['place'] + ' - ' + payload['distance'] + 'km')
-        connection.execute("INSERT INTO tracks VALUES (?, '<test>', ?, 'roundtrip', ?)", (int(round(datetime.now().timestamp())),payload['place'],payload['distance']))
+        connection.execute("INSERT INTO tracks VALUES (?, ?, ?, 'roundtrip', ?)", (int(round(datetime.now().timestamp())),payload['gpx'],payload['place'],payload['distance']))
         connection.commit()
 
     

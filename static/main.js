@@ -23,7 +23,7 @@ new Vue({
         const response = await fetch('/api/get/' + item.id);
         const gpxdata = await response.json();
 
-        this.gpx = 'clicked ' + item.id + gpxdata 
+        this.gpx = gpxdata 
       }
     }
 })

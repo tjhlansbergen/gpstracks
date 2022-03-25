@@ -15,7 +15,7 @@ new Vue({
         const request = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ place: this.place, distance: this.distance })
+          body: JSON.stringify({ place: this.place, distance: this.distance, gpx: this.gpx })
         };
 
         await fetch('/api/create', request);
