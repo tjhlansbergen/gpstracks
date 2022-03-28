@@ -4,19 +4,15 @@
 <head>
   <title>gpx tracks</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
 </head>
 
 <body>
-  <div id="header">
-    <h1>trailgpx.nl</h1>
-  </div>
-
   <div id="main">
 
     <div id="tracklist">
       <ul>
-        <li v-for="item in tracks" :key="item.id">
-          <div class="list-item" v-on:click="viewTrack(item)">
+        <li v-for="item in tracks" :key="item.id" class="list-item"  v-on:click="viewTrack(item)">
             <div class="grid-container">
               <div class="label">AFSTAND:</div>
               <div class="label">PLAATS:</div>
@@ -24,18 +20,25 @@
                   style="font-size: smaller;">km</span></em></div>
               <div class="value" v-bind:class="{ active: item.active }">[[ item.place ]]</div>
             </div>
-          </div>
         </li>
       </ul>
     </div>
 
-    <div id="map">[[ gpx ]]</div>
+    <div id="map">
+      <l-map id="map" ref="map">
+        <l-tile-layer
+          :attribution="'x'"
+          :url="'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'"
+        />
+      [[ gpx ]]
+    </div>
 
   </div>
 
-  <div id="footer"></div>
-
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/vue2-leaflet@2.6.0/dist/vue2-leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
   <script src="{{ url_for('static', filename='main.js') }}"></script>
 
 </body>
