@@ -13,6 +13,7 @@ ul {
     list-style-type: none; /* Remove bullets */
     padding: 0px;
     margin: 0px;
+    height: 575px;
 }
 
 #header {
@@ -36,12 +37,13 @@ ul {
 #tracklist {
     flex: 0 0 33%;
     margin: 0 8px;
-    height: 480px;
+    height: 575px;
+    overflow-y: scroll;
 }
 
 #map {
     flex: 1;
-    height: 480px;
+    height: 571px;
 }
 
 #form {
@@ -55,9 +57,8 @@ ul {
 
 .list-item {
     cursor: pointer;
-    background-color: white;
+    background-color: #f9f2ec;
     padding: 6px 10px;
-    border: 1px solid #fbe9e1;
 }
 
 .list-item:not(:last-child) { 
@@ -82,6 +83,6 @@ ul {
 }
 
 .list-item:hover{
-    border: 1px solid #decbc8;
+    background-color: #f3e5d9;
 }
 
